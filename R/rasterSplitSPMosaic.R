@@ -44,7 +44,7 @@ rasterSplitCropMosaic <-
     if(file.exists(fname)){
       message(paste("Crop", fname))
       rst<-raster::crop(rst, X)
-      rst.old<-raster::brick(fname)
+      rst.old<-raster::raster(fname)
       rst.mosaic<-raster::mosaic(rst, rst.old, fun=mean, tolerance=0.2)
       raster::writeRaster(rst.mosaic, filename=fname, overwrite=TRUE)
     } else {
